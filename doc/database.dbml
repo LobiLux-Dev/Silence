@@ -87,14 +87,14 @@ Table Loan {
 
 Table Properties {
   id int [not null, pk]
-  penalty_per_day decimal(5, 2)
-  penalty_on_non_working_days bool [default: false]
-  penalty_multiplier_on_non_working_days decimal(5, 2) [default: 2.0]
-  count_loan_days_on_non_working_days bool [default: false]
-  charge_late_fee_and_book_replacement_together bool [default: true]
-  max_extensions int
-  max_loan_days int
-  max_loans_per_user int
+  penalty_per_day decimal(5, 2) [not null, default: 0]
+  penalty_on_non_working_days bool [not null, default: false]
+  penalty_multiplier_on_non_working_days decimal(5, 2) [not null, default: 2]
+  count_loan_days_on_non_working_days bool [not null, default: false]
+  charge_late_fee_and_book_replacement_together bool [not null, default: true]
+  max_extensions int [not null, default: 3]
+  max_loan_days int [not null, default: 5]
+  max_loans_per_user int [not null, default: 3]
   created_at timestamp [not null, default: `now()`]
   updated_at timestamp [not null, default: `now()`]
 }
