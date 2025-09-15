@@ -17,7 +17,7 @@ Table GenreCatalog {
 Table DeweyClassification {
   id int [not null, pk]
   code varchar [not null]
-  description varchar [default: null]
+  description varchar [not null]
   parent_id int [ref: > DeweyClassification.id, default: null]
 }
 
@@ -86,10 +86,11 @@ Table Loan {
 }
 
 Table Properties {
+  id int [not null, pk]
   penalty_per_day decimal(5, 2)
   penalty_on_non_working_days bool [default: false]
   penalty_multiplier_on_non_working_days decimal(5, 2) [default: 2.0]
-  count_loan_days_in_non_working_days bool [default: false]
+  count_loan_days_on_non_working_days bool [default: false]
   charge_late_fee_and_book_replacement_together bool [default: true]
   max_extensions int
   max_loan_days int
